@@ -10,9 +10,16 @@ import soot.jimple.InstanceInvokeExpr;
 import soot.jimple.InvokeExpr;
 import soot.jimple.NewExpr;
 import soot.jimple.Stmt;
+//线程池执行器签名常量定义类，专门用于在 Android
+// 异步组件检测工具中管理线程池相关的类名、方法签名和线程池对象识别逻辑。
 
+//getNewThreadPoolValue(Stmt stmt) 方法
+//这个方法专门用于识别和提取新创建的线程池对象
+
+//这个类使得检测工具能够精确识别和分析 Java 线程池的使用模式，
+//与 AsyncTask 检测相结合，提供全面的 Android 异步编程 misuse 检测能力。
 public class ExecutorSig {
-	
+
 	// for ExecutorService
 	public final static String METHOD_SUBSIG_SHUT_DOWN_NOW = "void shutdownNow()";
 	public final static String METHOD_SUBSIG_SHUT_DOWN = "void shutdown()";
@@ -27,7 +34,9 @@ public class ExecutorSig {
 	public final static String METHOD_SIG_setRejectedExecutionHandler = "<java.util.concurrent.ThreadPoolExecutor: void setRejectedExecutionHandler(java.util.concurrent.RejectedExecutionHandler)>";
 	public final static String METHOD_SIG_setCorePoolSize = "<java.util.concurrent.ThreadPoolExecutor: void setCorePoolSize(int)>";
 	public final static String METHOD_SIG_setMaximumPoolSize = "<java.util.concurrent.ThreadPoolExecutor: void setMaximumPoolSize(int)>";
-	
+	public final static String METHOD_SIG_setMaxQueueSizePoints = "<java.util.concurrent.ThreadPoolExecutor: void setMaxQueueSizePoints(int)>";
+
+
 	public final static String METHOD_SIG_setThreadFactory = "<java.util.concurrent.ThreadPoolExecutor: void setThreadFactory(java.util.concurrent.ThreadFactory)>";
 	public static final String METHOD_SUBSIG_awaitTermination = "boolean awaitTermination(long,java.util.concurrent.TimeUnit)";
 	

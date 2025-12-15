@@ -26,9 +26,13 @@ import soot.jimple.ThisRef;
 import soot.toolkits.graph.ExceptionalUnitGraph;
 import soot.util.Chain;
 
+//异常处理检查器，主要用于检查线程池任务中的异常处理情况。
+//核心功能是验证在异步任务执行时是否设置了适当的异常处理机制，以防止未捕获异常导致的问题。
 public class ExceptionHandlerChecker {
 	
 
+//	判断是否存在异常处理缺失的情况
+//	如果既没有提交处理器也没有工厂处理器，则认为存在误用
 	public static boolean hasMisuse(InitPoint initPoint, Set<OneParaKeyPoint> setFactoryPoints,
 			Set<OneParaKeyPoint> submitPoints, Set<KeyPoint> setUncaughtExceptionHandlerPoints) {
 		return !hasSubmitHandler(initPoint, submitPoints, setUncaughtExceptionHandlerPoints)
@@ -87,9 +91,9 @@ public class ExceptionHandlerChecker {
 
 	private static boolean hasBackgroundMethodHandler(Local task, Set<KeyPoint> setUncaughtExceptionHandlerPoints) {
 		for (KeyPoint keyPoint : setUncaughtExceptionHandlerPoints) { // thread.setUncaughtExceptionHandler();
-			if (keyPoint.isAliasCaller(task)) {  
+			if (keyPoint.isAliasCaller(task)) {
 				/** / fkkk, soot has a bug:
-				 * 
+				 *
 				 *  $r5 = new cn.ac.ios.PoolTest$2;
 
         specialinvoke $r5.<cn.ac.ios.PoolTest$2: void <init>(cn.ac.ios.PoolTest)>(r3);  //inner Runnable
@@ -106,10 +110,10 @@ public class ExceptionHandlerChecker {
 
      label1:
         $r8 = staticinvoke <java.lang.Thread: java.lang.Thread currentThread()>();
-        
-        
+
+
 				 *  then $r8 is  $r5 ??
-				 * */ 
+				 * */
 				Log.e(keyPoint.getStmt());
 				Log.e(task);
 				Log.e("keyPoint.isAliasCaller(task)");
@@ -126,7 +130,7 @@ public class ExceptionHandlerChecker {
 					return false;
 				}
 			}
-			
+
 		}
 		return true;
 	}
@@ -140,7 +144,8 @@ public class ExceptionHandlerChecker {
 		if(runMethod == null) {
 			runMethod = getMethod(sootClass, AsyncTaskSig.DO_IN_BACKGROUND_NAME);
 		}
-		return null;
+//		这里原来是null，所以一直返回null！
+		return runMethod;
 	}
 
 	private static boolean hasExceptionHandler(SootMethod sootMethod) {
