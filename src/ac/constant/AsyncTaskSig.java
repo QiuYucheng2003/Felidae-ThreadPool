@@ -1,5 +1,9 @@
 package ac.constant;
 
+
+//所有 AsyncTask 相关签名集中在一个地方
+//在代码中直接使用有意义的常量名
+
 public class AsyncTaskSig {
 	
 	

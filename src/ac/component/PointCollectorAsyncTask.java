@@ -122,6 +122,7 @@ public class PointCollectorAsyncTask extends PointCollector {
 		return null;
 	}
 
+
 	@Override
 	protected boolean isSetMaxThreadSizePoint(Stmt stmt) {
 		return false;
@@ -131,5 +132,6 @@ public class PointCollectorAsyncTask extends PointCollector {
 	protected boolean isSetCoreThreadSizePoint(Stmt stmt) {
 		return false;
 	}
+
 
 }

@@ -22,6 +22,11 @@ import soot.jimple.NewExpr;
 import soot.toolkits.graph.BriefUnitGraph;
 import soot.toolkits.graph.UnitGraph;
 
+//数据流分析工具，专门用于在 Android 异步组件检测工具中进行过程内数据流分析，追踪局部变量的类型信息。
+
+//processLocalOfIdentityStmt() 方法：分析方法的 this 引用和参数引用；建立局部变量到对应类的映射关系
+//findInstantiateClassOfLocal() 方法：核心功能：通过数据流分析确定局部变量指向的实际对象类型，支持向后数据流分析
+
 public class DataFlowProcess {	
 	
 	/**

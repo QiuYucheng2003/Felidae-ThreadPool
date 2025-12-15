@@ -1,10 +1,13 @@
 package ac.constant;
 
+
+// ThreadSig 类是一个线程相关签名常量定义类
+// 专门用于在 Android 异步组件检测工具中管理 Java 线程相关的类名和方法签名。
 public class ThreadSig {
 
 	public static final String METHOD_SUBSIG_RUN = "void run()";
 	
-	public final static String METHOD_JOIN_PREFIX = "<java.lang.Thread: void join(";
+	public final static String METHOD_JOIN_PREFIX = "<java.lang.Thread: void join()>";
 	public final static String METHOD_SUBSIG_START = "void start()";
 	public final static String METHOD_SIG_START = "<java.lang.Thread: void start()>";
 	public final static String METHOD_SUBSIG_INTERRUPT = "boolean stop()";

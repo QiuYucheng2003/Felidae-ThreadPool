@@ -10,7 +10,7 @@ import ac.pool.point.InitPoint;
 import ac.pool.point.KeyPoint;
 import soot.SootClass;
 
-
+// 可以用于在PoolCheck中记录  Thread的各类错误，并且生成对应的txt错误记录文件。
 public class ThreadErrorRecord {
 
 	private static final String Path_FOLDER = PoolMain.getOutputPath("path") + File.separator;
@@ -67,7 +67,6 @@ public class ThreadErrorRecord {
 	//	if (!needRecord(ILSet, newPoint, null)) {
 	//		return;
 	//	}
-	
 		String filePath = ERROR_FOLDER + component + "IL-sum.txt";
 		recordSum(component, newPoint, null, filePath);
 	}
@@ -100,8 +99,14 @@ public class ThreadErrorRecord {
 		String filePath = ERROR_FOLDER + component + "UBNT-sum.txt";
 		recordSum(component, point, null, filePath);
 	}
-	
-	
+
+	public static void recordUBSCQ(String component, InitPoint point) {
+		String filePath = ERROR_FOLDER + component + "UBSCQ-sum.txt";
+		recordSum(component, point, null, filePath);
+	}
+
+
+
 	public static void recordUNT(String component, InitPoint point) {
 		String filePath = ERROR_FOLDER + component + "UNT-sum.txt";
 		recordSum(component, point, null, filePath);

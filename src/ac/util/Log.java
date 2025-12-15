@@ -24,6 +24,11 @@ package ac.util;
  * @author Baoquan Cui
  * @version 1.0
  */
+
+// log类的作用：输出信息日志、错误日志信息
+//	通过 DEBUG 和 ERROR_DEBUG 常量控制日志输出
+//	当前设置为 true，表示启用所有日志
+// 可以通过改为 false 来禁用日志输出
 public class Log {
 
 	private static final boolean DEBUG = true;
